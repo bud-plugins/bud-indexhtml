@@ -1,6 +1,15 @@
 var indexhtml = require("indexhtml");
 var fs = require("fs");
 
+plugin.build = true;
+plugin.title = 'index.html';
+plugin.params = [
+  'Destination file',
+  { name: 'JS', desc: 'List of JS files separated with comma' },
+  { name: 'CSS', desc: 'List of CSS files separated with comma' },
+  { name: 'Content', desc: 'Can be blank' }
+];
+
 module.exports = plugin;
 
 function plugin (dest, title, js, css, content) {

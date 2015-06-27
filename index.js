@@ -5,6 +5,7 @@ plugin.build = true;
 plugin.title = 'index.html';
 plugin.params = [
   'Destination file',
+  'Title',
   { name: 'JS', desc: 'List of JS files separated with comma' },
   { name: 'CSS', desc: 'List of CSS files separated with comma' },
   { name: 'Content', desc: 'Can be blank' }

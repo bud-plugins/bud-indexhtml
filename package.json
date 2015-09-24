@@ -17,6 +17,6 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
-    "indexhtml": "0.0.2"
+    "indexhtml": "0.0.3"
   }
 }

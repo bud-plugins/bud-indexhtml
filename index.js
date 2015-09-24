@@ -4,27 +4,27 @@ var fs = require("fs");
 plugin.build = true;
 plugin.title = 'index.html';
 plugin.params = [
-  'Destination file',
+  { key: 'dest', name: 'Destination file' },
   'Title',
-  { name: 'JS', desc: 'List of JS files separated with comma' },
-  { name: 'CSS', desc: 'List of CSS files separated with comma' },
+  { name: 'JS', desc: 'List of JS files separated with comma', list: true },
+  { name: 'CSS', desc: 'List of CSS files separated with comma', list: true },
   { name: 'Content', desc: 'Can be blank' }
 ];
 
 module.exports = plugin;
 
-function plugin (dest, title, js, css, content) {
+function plugin (options) {
   return function (b) {
     var doc = indexhtml({
-      title: title,
-      js: js.trim().split(/,\s*/),
-      css: css.trim().split(/,\s*/),
-      meta: [
+      title: options.title,
+      js: options.js,
+      css: options.css,
+      meta: options.meta || [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
-      content: content
+      content: options.content || ''
     });
 
-    fs.writeFile(dest, doc, b.done);
+    fs.writeFile(options.dest, doc, b.done);
   };
 }
